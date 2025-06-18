@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Failed to load."
+        android:text="@string/failed_to_load"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
