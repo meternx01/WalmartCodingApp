@@ -12,10 +12,10 @@
 - **Retrofit + Gson** for networking and JSON parsing
 - **Kotlin Coroutines** for asynchronous operations
 - **LiveData** for reactive UI updates
-- **Edge-to-Edge** UI support with WindowInsets handling
+- **View Binding** for type-safe view lookups
 - **Cleartext Traffic** configuration for non-HTTPS endpoints
 
-This project is ideal for hiring managers to review clean, maintainable code and an up‑to‑date Android tech stack.
+This project contains clean, maintainable code and an up‑to‑date Android tech stack.
 
 ---
 
@@ -55,7 +55,7 @@ app/
 
 ### Prerequisites
 
-- Android Studio Flamingo or newer
+- Android Studio Flamingo 2022.2.1 (April 2023) or newer
 - JDK 11+
 - Gradle 7+
 
@@ -83,7 +83,6 @@ app/
 - **Robust Networking**: Uses Retrofit with a custom Network Security Config for cleartext host whitelisting.
 - **Error Handling**: `Result`-based repository with `onSuccess`/`onFailure` flows.
 - **Localization**: All user-facing text in `strings.xml` with placeholders.
-- **Unit Testing**: ViewModel logic covered with Mockito/Kotlin test doubles.
 
 ---
 
