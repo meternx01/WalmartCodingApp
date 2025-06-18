@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WalmartCodingApp</string>
+    <string name="error_text">Error: %1$s</string>
+</resources>
