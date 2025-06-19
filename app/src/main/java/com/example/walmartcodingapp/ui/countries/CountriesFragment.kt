@@ -1,14 +1,11 @@
 package com.example.walmartcodingapp.ui.countries
 
-import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.walmartcodingapp.R
 import com.example.walmartcodingapp.data.network.NetworkModule
 import com.example.walmartcodingapp.data.repository.CountryRepository
@@ -40,16 +37,18 @@ class CountriesFragment : Fragment(R.layout.fragment_countries) {
                     is CountriesViewModel.UiState.Loading -> {
                         progress.isVisible = true
                         rvCountries.isVisible = false
-                        tvError.isVisible     = false
+                        tvError.isVisible = false
                     }
+
                     is CountriesViewModel.UiState.Success -> {
-                        progress.isVisible    = false
+                        progress.isVisible = false
                         rvCountries.isVisible = true
-                        rvCountries.adapter   = CountryAdapter(state.countries)
+                        rvCountries.adapter = CountryAdapter(state.countries)
                     }
+
                     is CountriesViewModel.UiState.Error -> {
                         progress.isVisible = false
-                        tvError.isVisible  = true
+                        tvError.isVisible = true
                         tvError.text = getString(R.string.error_text, state.throwable.message)
                     }
                 }

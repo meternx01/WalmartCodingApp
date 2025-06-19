@@ -13,13 +13,12 @@
 - **Kotlin Coroutines** for asynchronous operations
 - **LiveData** for reactive UI updates
 - **View Binding** for type-safe view lookups
-- **Cleartext Traffic** configuration for non-HTTPS endpoints
 
 This project contains clean, maintainable code and an up‑to‑date Android tech stack.
 
 ---
 
-## 🚀 Features
+## Features
 
 - Fetches countries JSON from: `https://gist.githubusercontent.com/peymano-wmt/.../countries.json`
 - Displays each country’s **Name**, **Region**, **Code**, and **Capital** in a custom card layout
@@ -29,7 +28,7 @@ This project contains clean, maintainable code and an up‑to‑date Android tec
 
 ---
 
-## 🗂 Folder Structure
+## Folder Structure
 
 ```
 app/
@@ -51,7 +50,7 @@ app/
 
 ---
 
-## 🛠 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -70,7 +69,7 @@ app/
 
 ---
 
-## 📋 Usage
+## Usage
 
 - App launches directly into the `CountriesFragment`.
 - Scroll through the list of countries.
@@ -78,15 +77,15 @@ app/
 
 ---
 
-## 🎯 Technical Highlights
+## Technical Highlights
 
-- **Robust Networking**: Uses Retrofit with a custom Network Security Config for cleartext host whitelisting.
+- **Robust Networking**: Uses the industry standard Retrofit with Gson for JSON parsing.
 - **Error Handling**: `Result`-based repository with `onSuccess`/`onFailure` flows.
 - **Localization**: All user-facing text in `strings.xml` with placeholders.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
 

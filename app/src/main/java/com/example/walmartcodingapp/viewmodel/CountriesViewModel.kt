@@ -7,7 +7,7 @@ import com.example.walmartcodingapp.data.model.Country
 import com.example.walmartcodingapp.data.repository.CountryRepository
 import kotlinx.coroutines.launch
 
-class CountriesViewModel (private val repo: CountryRepository): ViewModel() {
+class CountriesViewModel(private val repo: CountryRepository) : ViewModel() {
 
     private val _uiState = MutableLiveData<UiState>()
     val uiState: MutableLiveData<UiState>
@@ -19,18 +19,16 @@ class CountriesViewModel (private val repo: CountryRepository): ViewModel() {
 
     private fun loadCountries() = viewModelScope.launch {
         _uiState.value = UiState.Loading
-        repo.getCountries()
-            .onSuccess { countries ->
+        repo.getCountries().onSuccess { countries ->
                 _uiState.value = UiState.Success(countries)
-            }
-            .onFailure { throwable ->
+            }.onFailure { throwable ->
                 _uiState.value = UiState.Error(throwable)
             }
     }
 
     sealed class UiState {
-        object Loading: UiState()
-        data class Success(val countries: List<Country>): UiState()
-        data class Error(val throwable: Throwable): UiState()
+        object Loading : UiState()
+        data class Success(val countries: List<Country>) : UiState()
+        data class Error(val throwable: Throwable) : UiState()
     }
 }

@@ -1,31 +1,35 @@
 package com.example.walmartcodingapp.ui.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.walmartcodingapp.R
 import com.example.walmartcodingapp.data.model.Country
+import com.example.walmartcodingapp.databinding.ItemCountryBinding
 
-class CountryAdapter(private val items: List<Country>): RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
+class CountryAdapter(private val items: List<Country>) :
+    RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
 
-    class CountryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nameRegion = itemView.findViewById<TextView>(R.id.tvNameRegion)
-        val code       = itemView.findViewById<TextView>(R.id.tvCode)
-        val capital    = itemView.findViewById<TextView>(R.id.tvCapital)
-    }
+    inner class CountryViewHolder(val binding: ItemCountryBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_country, parent, false)
-        return CountryViewHolder(view)
+        val binding = ItemCountryBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+        return CountryViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
         val country = items[position]
-        holder.nameRegion.text = country.name
-        holder.code.text = country.code
-        holder.capital.text = country.capital
+        with(holder.binding) {
+            val context = holder.itemView.context
+            tvNameRegion.text = context.getString(
+                R.string.country_name_region, country.name, country.region
+            )
+            tvCode.text = country.code
+            tvCapital.text = country.capital
+        }
     }
 
     override fun getItemCount(): Int = items.size
