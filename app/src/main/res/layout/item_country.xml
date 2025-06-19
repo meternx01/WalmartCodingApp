@@ -28,7 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                tools:text="Algeria" />
+                tools:text="Algeria, AF" />
 
             <TextView
                 android:id="@+id/tvCode"
