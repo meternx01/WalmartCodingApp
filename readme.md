@@ -4,7 +4,13 @@
 
 ---
 
-## 🎯 Project Description
+## Video Demo
+
+<a href="https://www.youtube.com/watch?v=j43RPNbmKzc">
+  <img src="https://img.youtube.com/vi/j43RPNbmKzc/maxresdefault.jpg" alt="Watch the video: Walmart Challenge Code Walkthrough" style="width:30%; height:auto;">
+</a>
+
+## Project Description
 
 `CountriesApp` showcases best practices in modern Android development, using:
 
