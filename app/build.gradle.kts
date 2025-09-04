@@ -60,7 +60,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.activity.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
