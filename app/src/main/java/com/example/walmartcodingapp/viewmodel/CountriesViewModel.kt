@@ -1,10 +1,12 @@
 package com.example.walmartcodingapp.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.walmartcodingapp.data.model.Country
 import com.example.walmartcodingapp.data.repository.CountryRepository
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class CountriesViewModel(private val repo: CountryRepository) : ViewModel() {
@@ -15,10 +17,8 @@ class CountriesViewModel(private val repo: CountryRepository) : ViewModel() {
         data class Error(val throwable: Throwable) : UiState()
     }
 
-    private val _uiState = MutableLiveData<UiState>()
-    val uiState: MutableLiveData<UiState>
-        get() = _uiState
-
+    private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
+    val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
     init {
         loadCountries()
