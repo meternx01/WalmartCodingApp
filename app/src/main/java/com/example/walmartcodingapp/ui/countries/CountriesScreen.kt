@@ -5,7 +5,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -24,7 +23,7 @@ fun CountriesScreen() {
     val viewModel: CountriesViewModel = viewModel(
         factory = CountriesViewModelFactory(CountryRepository(NetworkModule.apiService))
     )
-    val uiState by viewModel.uiState.observeAsState(CountriesViewModel.UiState.Loading)
+    val uiState by viewModel.uiState.collectAsState()
 
     Box(modifier = Modifier.fillMaxSize()) {
         when (uiState) {
