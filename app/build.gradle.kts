@@ -1,11 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("org.jetbrains.kotlin.plugin.compose") version "2.2.10"
 }
 
 android {
     namespace = "com.example.walmartcodingapp"
-    compileSdk = 35
+    compileSdk = 36
+
 
     defaultConfig {
         applicationId = "com.example.walmartcodingapp"
@@ -18,7 +20,8 @@ android {
     }
 
     buildFeatures{
-        viewBinding = true
+        viewBinding = false // Disable viewBinding
+        compose = true // Enable Jetpack Compose
     }
 
     buildTypes {
@@ -50,6 +53,15 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
+    // Jetpack Compose dependencies
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.material)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.ui.tooling)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.activity.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
