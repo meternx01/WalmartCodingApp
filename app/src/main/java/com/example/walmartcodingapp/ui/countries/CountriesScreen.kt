@@ -10,19 +10,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.walmartcodingapp.R
 import com.example.walmartcodingapp.data.model.Country
-import com.example.walmartcodingapp.data.network.NetworkModule
-import com.example.walmartcodingapp.data.repository.CountryRepository
 import com.example.walmartcodingapp.viewmodel.CountriesViewModel
-import com.example.walmartcodingapp.viewmodel.CountriesViewModelFactory
 
 @Composable
 fun CountriesScreen() {
-    val viewModel: CountriesViewModel = viewModel(
-        factory = CountriesViewModelFactory(CountryRepository(NetworkModule.apiService))
-    )
+    val viewModel: CountriesViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsState()
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -76,13 +71,11 @@ fun CountryItem(country: Country) {
 @Composable
 @Preview(showBackground = true)
 fun CountriesScreenPreview() {
-    // Provide a sample list of countries for preview
     val sampleCountries = listOf(
         Country("United States", "US", "Washington, D.C.", "Americas"),
         Country("Canada", "CA", "Ottawa", "Americas"),
         Country("Japan", "JP", "Tokyo", "Asia")
     )
-    // Simulate Success state
     Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(sampleCountries) { country ->

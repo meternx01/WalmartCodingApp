@@ -3,13 +3,18 @@ package com.example.walmartcodingapp.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.walmartcodingapp.data.model.Country
-import com.example.walmartcodingapp.data.repository.CountryRepository
+import com.example.walmartcodingapp.domain.usecase.GetCountriesUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CountriesViewModel(private val repo: CountryRepository) : ViewModel() {
+@HiltViewModel
+class CountriesViewModel @Inject constructor(
+    private val getCountriesUseCase: GetCountriesUseCase
+) : ViewModel() {
 
     sealed class UiState {
         data object Loading : UiState()
@@ -26,7 +31,7 @@ class CountriesViewModel(private val repo: CountryRepository) : ViewModel() {
 
     private fun loadCountries() = viewModelScope.launch {
         _uiState.value = UiState.Loading
-        repo.getCountries().onSuccess { countries ->
+        getCountriesUseCase().onSuccess { countries ->
             _uiState.value = UiState.Success(countries)
         }.onFailure { throwable ->
             _uiState.value = UiState.Error(throwable)
